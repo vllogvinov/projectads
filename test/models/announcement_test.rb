@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AdvertismentTest < ActiveSupport::TestCase
+class AnnouncementTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong></strong>
+  <%= @announcement.title %>
+</p>
+
+<div style="width:400px; height:auto">
+	<%= link_to image_tag(@announcement.image, style: "width:100%"), announcements_path if @announcement.image.attached? %>	
+</div>
+
+
+<p>
+  <strong>Описание:</strong>
+  <%= @announcement.content %>
+</p>
+
+<p>
+  <strong>Тип:</strong>
+  <%= @announcement.announcement_type %>
+</p>
+
+<p>
+  <strong>Пользователь:</strong>
+  <%= @announcement.user_id  %>
+</p>
+
+<%= link_to 'Edit', edit_announcement_path(@announcement) %> |
+<%= link_to 'Back', announcements_path %>

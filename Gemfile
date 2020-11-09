@@ -10,6 +10,16 @@ gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 gem 'devise'
+gem 'jquery-rails'
+gem 'bootstrap'
+gem 'dotenv-rails'
+gem 'traceroute'
+gem 'rack-mini-profiler'
+gem 'rubocop', require: false
+gem "rubycritic", require: false
+gem 'aasm'
+gem 'activeadmin'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -44,6 +54,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'enumerize'
   gem 'cancan'
+  gem 'bullet'
+  gem 'brakeman'
+  gem "letter_opener"
 end
 
 group :test do
@@ -58,6 +71,8 @@ group :test do
   gem 'database_cleaner-active_record'
   gem 'simplecov'
   gem 'shoulda-matchers'
+  gem 'colored'
+  gem 'deadweight', :require => 'deadweight/hijack/rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
