@@ -19,7 +19,7 @@ gem 'rubocop', require: false
 gem "rubycritic", require: false
 gem 'aasm'
 gem 'activeadmin'
-
+gem 'activeadmin_addons'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker

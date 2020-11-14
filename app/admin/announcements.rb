@@ -1,7 +1,13 @@
 ActiveAdmin.register Announcement do
 
-
   permit_params :title, :content, :published_at, :user_id
+
+  #index do
+  #selectable_column
+  #id_column
+   #state_column :status
+  #end
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
