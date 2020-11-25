@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title, 'Название товара или услуги: ' %>
+    <%= form.label :title, 'Name: ' %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :content, 'Описание товара: ' %>
+    <%= form.label :content, 'Description: ' %>
     <%= form.text_area :content %>
   </div>
 
   <div class="field">
-    <%= form.label :announcement_type, 'Тип объявления: ' %>
+    <%= form.label :announcement_type, 'Type: ' %>
     <%= form.select :announcement_type, Announcement::VALID_TYPES %>
   </div>
 
   <div class="field">
-    <%= form.label :image, 'Изображение: ' %>
+    <%= form.label :image, 'Image: ' %>
     <%= form.file_field :image %>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Обновить' %>
+    <%= form.submit 'Submit' %>
   </div>
 <% end %>

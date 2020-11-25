@@ -25,5 +25,10 @@
   <%= @announcement.user_id  %>
 </p>
 
-<%= link_to 'Edit', edit_announcement_path(@announcement) %> |
+
+<% if can? :update, @article %>
+	<%= link_to 'Edit', edit_announcement_path(@announcement) %> |
+<% end %>
+
 <%= link_to 'Back', announcements_path %>
+
