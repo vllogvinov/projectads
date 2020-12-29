@@ -1,0 +1,4 @@
+:schedule:
+  publishworker:
+    cron: '0 * * * * *'
+    class: PublishWorker

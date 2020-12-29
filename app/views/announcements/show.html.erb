@@ -11,23 +11,35 @@
 
 
 <p>
-  <strong>Описание:</strong>
+  <strong>Description:</strong>
   <%= @announcement.content %>
 </p>
 
 <p>
-  <strong>Тип:</strong>
+  <strong>Type:</strong>
   <%= @announcement.announcement_type %>
 </p>
 
 <p>
-  <strong>Пользователь:</strong>
+  <strong>User:</strong>
   <%= @announcement.user_id  %>
 </p>
 
+<p>
+  <strong>Phone number:</strong>
+  <%= @announcement.phone %>
+</p>
 
-<% if can? :update, @article %>
-	<%= link_to 'Edit', edit_announcement_path(@announcement) %> |
+<% if @announcement.draft? || @announcement.rejected? %>
+  <% if can? :update, @announcement %>
+  	<%= link_to 'Edit', edit_announcement_path(@announcement) %> |
+  <% end %>
+<% elsif @announcement.ready_to_publish? %>
+  <p><b>Announcement is on the moderation...</b></p>
+<% end %>
+
+<% if can? :delete, @announcement %>
+  <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' } %> | 
 <% end %>
 
 <%= link_to 'Back', announcements_path %>

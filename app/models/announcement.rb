@@ -4,7 +4,9 @@ class Announcement < ApplicationRecord
 
 	belongs_to :user
 	has_one_attached :image
-	default_scope -> { order(created_at: :desc) }		#упорядочивание по последней дате
+	scope :desc_order, -> { order(created_at: :desc) }
+	scope :published, -> { where(status: 4) }
+	
 
 	#scopes
 
@@ -25,7 +27,7 @@ class Announcement < ApplicationRecord
 		state :draft, initial:true 
 		state :ready_to_publish, :approved, :rejected, :published, :archived
 
-		event :send_for_moderate do
+		event :send_to_moderate do
 			transitions from: :draft, to: :ready_to_publish
 		end
 
@@ -39,6 +41,10 @@ class Announcement < ApplicationRecord
 
 		event :publish do
 			transitions from: :approved, to: :published
+		end
+
+		event :refact do
+			transitions from: :rejected, to: :draft
 		end
 
 		event :archive do 

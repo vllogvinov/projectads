@@ -27,11 +27,25 @@
   </div>
 
   <div class="field">
+    <%= form.label :phone, 'Phone: ' %>
+    <%= form.telephone_field :phone, autofocus: true, placeholder: '+375(XX)-XXX-XX-XX' %>
+  </div>
+
+  <div class="field">
     <%= form.label :image, 'Image: ' %>
     <%= form.file_field :image %>
   </div>
 
+<div class="flex-buttons" style="display:flex;">
+  <% if @announcement.draft? || @announcement.rejected? %>
+    <div class="actions">
+      <%= form.submit 'Save draft' %>
+    </div>
   <div class="actions">
-    <%= form.submit 'Submit' %>
+    <%= form.submit 'Post announcement', name: 'post_button' %>
   </div>
+  <% end %>
+</div>
+  
+
 <% end %>

@@ -1,5 +1,14 @@
 ActiveAdmin.register Announcement do
-  permit_params :title, :content, :published_at, :user_id
+  permit_params :title, :content, :published_at, :user_id, :status
+
+  controller do
+    def index
+      index! do |format|
+        @announcements = Announcement.where.not(status: 'draft').page(params[:page])
+        format.html
+      end
+    end
+  end
 
   index do
     selectable_column
@@ -26,6 +35,16 @@ ActiveAdmin.register Announcement do
     end
     active_admin_comments
   end
+
+  config.clear_action_items!
+  actions :all, :except => [:edit]
+    action_item :approve, only: :show do
+      link_to 'Approve', admin_announcement_path(announcement: {status: "approved"}), method: :patch if announcement.ready_to_publish?
+    end
+
+    action_item :reject, only: :show do
+      link_to 'Reject', admin_announcement_path(announcement: {status: "rejected"}), method: :patch if announcement.ready_to_publish?
+    end
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

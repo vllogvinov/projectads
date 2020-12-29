@@ -15,3 +15,22 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+body.active_admin {
+  .status_tag.approved {
+    background: #a9c68d;
+  }
+}
+
+body.active_admin {
+  .status_tag.rejected {
+    background: #ff0000;
+  }
+}
+
+body.active_admin {
+  .status_tag.published {
+    background: #4a86e8;
+    }
+}
+
