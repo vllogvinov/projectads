@@ -4,6 +4,7 @@ class Announcement < ApplicationRecord
 
 	belongs_to :user
 	has_one_attached :image
+  paginates_per 6
 	scope :desc_order, -> { order(created_at: :desc) }
 	scope :published, -> { where(status: 4) }
 	

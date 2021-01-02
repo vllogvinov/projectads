@@ -36,6 +36,8 @@
 
 <br>
 
+<%= paginate @announcements %>
+
 <% if user_signed_in? %>
   <%= link_to 'New Announcement', new_announcement_path %><br>
   <%= link_to 'Log out', destroy_user_session_path %><br>

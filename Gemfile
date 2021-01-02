@@ -24,6 +24,7 @@ gem 'phonelib'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'redis-rails'
+gem 'kaminari'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -70,6 +71,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'rspec-rails'
+  gem 'turnip'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'database_cleaner-active_record'
@@ -77,6 +79,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'colored'
   gem 'deadweight', :require => 'deadweight/hijack/rails'
+  gem 'simplecov', require: false, group: :test
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

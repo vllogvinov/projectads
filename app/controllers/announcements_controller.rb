@@ -4,7 +4,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = Announcement.published.includes(image_attachment: :blob)
+    @announcements = Announcement.published.includes(image_attachment: :blob).page(params[:page]).per(6).desc_order
   end
 
   # GET /announcements/1
@@ -20,7 +20,7 @@ class AnnouncementsController < ApplicationController
     @announcement = Announcement.new(user_id: current_user.id)
   end
 
-  # GET /announcements/1/edit
+  # GET /announcements/1/edit 
   def edit
   end
 

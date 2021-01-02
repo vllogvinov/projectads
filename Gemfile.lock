@@ -123,6 +123,10 @@ GEM
     css_parser (1.2.6)
       addressable
       rdoc
+    cucumber-gherkin (14.2.0)
+      cucumber-messages (~> 12.4, >= 12.4.0)
+    cucumber-messages (12.4.0)
+      protobuf-cucumber (~> 3.10, >= 3.10.8)
     database_cleaner (1.8.5)
     database_cleaner-active_record (1.8.0)
       activerecord
@@ -223,6 +227,7 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
+    middleware (0.1.0)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
@@ -240,6 +245,11 @@ GEM
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     popper_js (1.16.0)
+    protobuf-cucumber (3.10.8)
+      activesupport (>= 3.2)
+      middleware
+      thor
+      thread_safe
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -320,6 +330,10 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.4)
+    rspec (3.9.0)
+      rspec-core (~> 3.9.0)
+      rspec-expectations (~> 3.9.0)
+      rspec-mocks (~> 3.9.0)
     rspec-core (3.9.3)
       rspec-support (~> 3.9.3)
     rspec-expectations (3.9.3)
@@ -426,6 +440,9 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
+    turnip (4.2.0)
+      cucumber-gherkin (~> 14.0)
+      rspec (>= 3.0, < 4.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     unicode-display_width (1.7.0)
@@ -484,6 +501,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.7)
   jquery-rails
+  kaminari
   letter_opener
   listen (~> 3.2)
   phonelib
@@ -506,6 +524,7 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   traceroute
   turbolinks (~> 5)
+  turnip
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
