@@ -42,4 +42,6 @@ yarn-debug.log*
 
 .idea/
 .env/
-.coverage/
+/coverage/
+/spec/
+.rspec

@@ -11,36 +11,36 @@
 
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= "#{t('announcements.fields.content')}: " %></strong>
   <%= @announcement.content %>
 </p>
 
 <p>
-  <strong>Type:</strong>
+  <strong><%= "#{t('announcements.fields.type')}: " %></strong>
   <%= @announcement.announcement_type %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong><%= "#{t('announcements.fields.name')}: " %></strong>
   <%= @announcement.user_id  %>
 </p>
 
 <p>
-  <strong>Phone number:</strong>
+  <strong><%= "#{t('announcements.fields.phone')}: " %></strong>
   <%= @announcement.phone %>
 </p>
 
 <% if @announcement.draft? || @announcement.rejected? %>
   <% if can? :update, @announcement %>
-  	<%= link_to 'Edit', edit_announcement_path(@announcement) %> |
+  	<%= link_to t('announcements.buttons.edit'), edit_announcement_path(@announcement) %> |
   <% end %>
 <% elsif @announcement.ready_to_publish? %>
-  <p><b>Announcement is on the moderation...</b></p>
+  <p><b><%= t('on_moderation_message') %></b></p>
 <% end %>
 
 <% if can? :delete, @announcement %>
-  <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+  <%= link_to t('announcements.buttons.destroy'), @announcement, method: :delete, data: { confirm: 'Are you sure?' } %> | 
 <% end %>
 
-<%= link_to 'Back', announcements_path %>
+<%= link_to t('announcements.buttons.back'), announcements_path %>
 

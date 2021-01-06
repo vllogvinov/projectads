@@ -1,8 +1,9 @@
-class UsersController < ApplicationController
+# frozen_string_literal: true
 
-	before_action :authenticate_user!
-	
+class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def announcements
-  	@announcements = User.find(params[:id]).announcements.includes(image_attachment: :blob)
+    @announcements = User.find(params[:id]).announcements.includes(image_attachment: :blob)
   end
-end	
+end

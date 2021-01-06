@@ -1,12 +1,13 @@
-<h1>My announcements:</h1> 
+<h1><%= t('announcements.titles.user_announcements') %></h1> 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Type</th>
-      <th>User</th>
-      <th>Status of announcement:</th>
+      <th> <%= t('announcements.fields.title') %> </th>
+      <th></th>
+      <th> <%= t('announcements.fields.content') %> </th>
+      <th> <%= t('announcements.fields.type') %> </th>
+      <th> <%= t('announcements.fields.name') %> </th>
+      <th> <%= t('announcements.fields.status') %> </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,18 +20,18 @@
         <td><%= announcement.content %></td>
         <td><%= announcement.announcement_type %></td>
         <td><%= announcement.user_id %></td>
-        <td><%= announcement.status %></td>
-        <td><%= link_to 'Show', announcement %></td>
+        <td><%= t("announcements.status.#{announcement.status}") %></td>
+        <td><%= link_to t('announcements.buttons.show'), announcement %></td>
         
         <% if can? :index, @announcement %>
-          <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
+          <td><%= link_to t('announcements.buttons.edit'), edit_announcement_path(announcement) %></td>
         <% end %>
 
         <% if can? :destroy, @announcement %>
-          <td><%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to t('announcements.buttons.destroy'), announcement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
-    <td><%= link_to 'Back', announcements_path %></td>
+    <td><%= link_to t('announcements.buttons.back'), announcements_path %></td>
   </tbody>
 </table>

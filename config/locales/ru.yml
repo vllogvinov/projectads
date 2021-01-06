@@ -1,0 +1,38 @@
+ru:
+  announcements:
+    titles:
+      announcements: Объявления
+      new_announcement: Создание нового объявления
+      edit_announcement: Редактирование объявления
+      user_announcements: Мои объявления
+    fields:
+      title: Заголовок
+      content: Текст объявления
+      type: Тип
+      name: Пользователь
+      phone: Номер телефона
+      image: Изображение
+      status: Статус
+    buttons: 
+      show: Просмотр
+      edit: Изменить
+      destroy: Удалить
+      new_announcement: Создать объявление
+      log_out: Выйти из аккаунта
+      my_announcements: Мои объявления
+      sign_in: Вход
+      sign_up: Регистрация
+      save_draft: Сохранить черновик
+      post: Опубликовать
+      back: Назад
+    status:
+      draft: Черновик(видно только вам)
+      ready_to_publish: Готово к публикации
+      approved: Одобрено
+      rejected: Отклонено
+      published: Опубликовано
+      archived: В архиве
+  confirm_messages:
+    confirm_delete: Вы уверены? 
+    on_moderation_message: Ваше объявление обрабатывается администрацией
+ 

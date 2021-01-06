@@ -1,7 +1,9 @@
-class PublishWorker
-	include Sidekiq::Worker
+# frozen_string_literal: true
 
-	def perform
-		Announcement.approved.update_all(status: 'published')
-	end
+class PublishWorker
+  include Sidekiq::Worker
+
+  def perform
+    Announcement.approved.update_all(status: 'published')
+  end
 end

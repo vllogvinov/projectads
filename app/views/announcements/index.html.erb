@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Announcements</h1>
+<h1><%= t('announcements.titles.announcements') %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Type</th>
-      <th>Name</th>
+      <th> <%= t('announcements.fields.title') %> </th>
+      <th></th>
+      <th> <%= t('announcements.fields.content') %> </th>
+      <th> <%= t('announcements.fields.type') %> </th>
+      <th> <%= t('announcements.fields.name') %> </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,13 +22,13 @@
         <td><%= announcement.content %></td>
         <td><%= announcement.announcement_type %></td>
         <td><%= announcement.user_id %></td>
-        <td><%= link_to 'Show', announcement %></td>
+        <td><%= link_to t('announcements.buttons.show'), announcement %></td>
         
         <% if can? :index, @announcement %>
-          <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
+          <td><%= link_to t('announcements.buttons.edit'), edit_announcement_path(announcement) %></td>
         <% end %>
         <% if can? :destroy, @announcement %>
-          <td><%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to t('announcements.buttons.destroy'), announcement, method: :delete, data: { confirm: t('confirm_messages.confirm_delete') } %></td>
         <% end %>
       </tr>
     <% end %>
@@ -39,10 +40,10 @@
 <%= paginate @announcements %>
 
 <% if user_signed_in? %>
-  <%= link_to 'New Announcement', new_announcement_path %><br>
-  <%= link_to 'Log out', destroy_user_session_path %><br>
-  <%= link_to 'My announcements', announcements_user_path(current_user, @announcement) %>
+  <%= link_to t('announcements.buttons.new_announcement'), new_announcement_path %><br>
+  <%= link_to t('announcements.buttons.log_out'), destroy_user_session_path %><br>
+  <%= link_to t('announcements.buttons.my_announcements'), announcements_user_path(current_user, @announcement) %>
 <% else %>
-  <%= link_to 'Sign in', new_user_session_path %>
-  <%= link_to 'Sign up', new_user_registration_path %>
+  <%= link_to t('announcements.buttons.log_in'), new_user_session_path %>
+  <%= link_to t('announcements.buttons.sign_up'), new_user_registration_path %>
 <% end %>

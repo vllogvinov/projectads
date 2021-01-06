@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Announcement do
   permit_params :title, :content, :published_at, :user_id, :status
 
@@ -37,14 +39,18 @@ ActiveAdmin.register Announcement do
   end
 
   config.clear_action_items!
-  actions :all, :except => [:edit]
-    action_item :approve, only: :show do
-      link_to 'Approve', admin_announcement_path(announcement: {status: "approved"}), method: :patch if announcement.ready_to_publish?
+  actions :all, except: [:edit]
+  action_item :approve, only: :show do
+    if announcement.ready_to_publish?
+      link_to 'Approve', admin_announcement_path(announcement: { status: 'approved' }), method: :patch
     end
+  end
 
-    action_item :reject, only: :show do
-      link_to 'Reject', admin_announcement_path(announcement: {status: "rejected"}), method: :patch if announcement.ready_to_publish?
+  action_item :reject, only: :show do
+    if announcement.ready_to_publish?
+      link_to 'Reject', admin_announcement_path(announcement: { status: 'rejected' }), method: :patch
     end
+  end
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -60,5 +66,4 @@ ActiveAdmin.register Announcement do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end
