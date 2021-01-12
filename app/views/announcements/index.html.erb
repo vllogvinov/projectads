@@ -44,6 +44,6 @@
   <%= link_to t('announcements.buttons.log_out'), destroy_user_session_path %><br>
   <%= link_to t('announcements.buttons.my_announcements'), announcements_user_path(current_user, @announcement) %>
 <% else %>
-  <%= link_to t('announcements.buttons.log_in'), new_user_session_path %>
+  <%= link_to t('announcements.buttons.sign_in'), new_user_session_path %>
   <%= link_to t('announcements.buttons.sign_up'), new_user_registration_path %>
 <% end %>

@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :announcement_type, "#{t('announcements.fields.type')}: " %>
-    <%= form.select :announcement_type, Announcement::VALID_TYPES %>
+    <%= form.select :announcement_type, Announcement::VALID_TYPES.map{ |type| t ("announcements.types.#{type.downcase}")} %>
   </div>
 
   <div class="field">

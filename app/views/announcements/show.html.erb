@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong></strong>
   <%= @announcement.title %>
 </p>
 
@@ -35,7 +34,7 @@
   	<%= link_to t('announcements.buttons.edit'), edit_announcement_path(@announcement) %> |
   <% end %>
 <% elsif @announcement.ready_to_publish? %>
-  <p><b><%= t('on_moderation_message') %></b></p>
+  <p><b><%= t('confirm_messages.on_moderation_message') %></b></p>
 <% end %>
 
 <% if can? :delete, @announcement %>
