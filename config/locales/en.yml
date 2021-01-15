@@ -9,7 +9,7 @@ en:
       title: Title
       content: Content
       type: Type
-      name: Name
+      author: Author
       phone: Phone number
       image: Image
       status: Status
@@ -32,9 +32,15 @@ en:
       rejected: Rejected
       published: Published
       archived: Archived
+    types:
+      buy: Buy
+      sell: Sell
+      exchange: Exchange
   confirm_messages:
     confirm_delete: Are you sure?
     on_moderation_message: Announcement is on the moderation...
+  flashes:
+    reject_notice: Your announcement does not comply with the publication rules and has been rejected. You can edit it and try again. 
     
   devise:
     confirmations:

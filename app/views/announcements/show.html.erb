@@ -13,14 +13,14 @@
   <strong><%= "#{t('announcements.fields.content')}: " %></strong>
   <%= @announcement.content %>
 </p>
-
+  
 <p>
   <strong><%= "#{t('announcements.fields.type')}: " %></strong>
-  <%= @announcement.announcement_type %>
+  <%= t("announcements.types.#{@announcement.announcement_type.downcase}") %>
 </p>
 
 <p>
-  <strong><%= "#{t('announcements.fields.name')}: " %></strong>
+  <strong><%= "#{t('announcements.fields.author')}: " %></strong>
   <%= @announcement.user_id  %>
 </p>
 
@@ -41,5 +41,5 @@
   <%= link_to t('announcements.buttons.destroy'), @announcement, method: :delete, data: { confirm: 'Are you sure?' } %> | 
 <% end %>
 
-<%= link_to t('announcements.buttons.back'), announcements_path %>
+<%= link_to t('announcements.buttons.back'), :back %>
 

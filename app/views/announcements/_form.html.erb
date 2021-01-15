@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :announcement_type, "#{t('announcements.fields.type')}: " %>
-    <%= form.select :announcement_type, Announcement::VALID_TYPES.map{ |type| t ("announcements.types.#{type.downcase}")} %>
+    <%= form.select :announcement_type, Announcement::VALID_TYPES.map{ |type| [t("announcements.types.#{type.downcase}"), type]} %>
   </div>
 
   <div class="field">
@@ -32,12 +32,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :image, "#{t('announcements.fields.image')}: " %>
+    <%= form.label :image, "#{t('announcements.fields.image')}:" %>&nbsp
     <%= form.file_field :image %>
   </div>
 
-<div class="flex-buttons" style="display:flex;">
-  <% if @announcement.draft? || @announcement.rejected? %>
+<div class="flex-buttons">
+  <% if draft_or_rejected(@announcement) %>
     <div class="actions">
       <%= form.submit t('announcements.buttons.save_draft') %>
     </div>

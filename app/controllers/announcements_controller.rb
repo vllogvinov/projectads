@@ -13,8 +13,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements/1.json
   def show
     if @announcement.rejected?
-      flash[:notice] = 'Your announcement does not comply with the publication rules
-                        and has been rejected. You can edit it and try again. '
+      flash[:notice] = t('flashes.reject_notice')
     end
   end
 
@@ -30,9 +29,9 @@ class AnnouncementsController < ApplicationController
   # POST /announcements.json
   def create
     @announcement = current_user.announcements.new(announcement_params)
+    @announcement.send_to_moderate if params[:post_button].present?
     respond_to do |format|
       if @announcement.save
-        @announcement.send_to_moderate! if params[:post_button].present?
         format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
         format.json { render :show, status: :created, location: @announcement }
       else
@@ -47,8 +46,7 @@ class AnnouncementsController < ApplicationController
   def update
     respond_to do |format|
       if @announcement.update(announcement_params)
-        @announcement.refact! if @announcement.rejected?
-        @announcement.send_to_moderate! if params[:post_button].present?
+        status_definition
         format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
         format.json { render :show, status: :ok, location: @announcement }
       else
@@ -78,5 +76,10 @@ class AnnouncementsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def announcement_params
     params.require(:announcement).permit(:title, :content, :announcement_type, :status, :phone, :image, :post_button)
+  end
+
+  def status_definition
+    @announcement.refact! if @announcement.rejected?
+    @announcement.send_to_moderate! if params[:post_button].present?
   end
 end

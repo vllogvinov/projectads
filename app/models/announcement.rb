@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Announcement < ApplicationRecord
+  include AASM
+
   VALID_TYPES = %w[Buy Sell Exchange].freeze
 
   belongs_to :user
@@ -8,10 +10,6 @@ class Announcement < ApplicationRecord
   paginates_per 6
   scope :desc_order, -> { order(created_at: :desc) }
   scope :published, -> { where(status: 4) }
-
-  # scopes
-
-  include AASM
 
   validates_presence_of(:title, :content, :announcement_type)
 

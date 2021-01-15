@@ -9,7 +9,7 @@
       <th></th>
       <th> <%= t('announcements.fields.content') %> </th>
       <th> <%= t('announcements.fields.type') %> </th>
-      <th> <%= t('announcements.fields.name') %> </th>
+      <th> <%= t('announcements.fields.author') %> </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,7 +20,7 @@
         <td><%= announcement.title %></td>
         <td><div style="width: 60px; height:auto"><%= image_tag(announcement.image, style: "width:100%") if announcement.image.attached? %></div></td>
         <td><%= announcement.content %></td>
-        <td><%= announcement.announcement_type %></td>
+        <td><%= t("announcements.types.#{announcement.announcement_type.downcase}") %></td>
         <td><%= announcement.user_id %></td>
         <td><%= link_to t('announcements.buttons.show'), announcement %></td>
         
