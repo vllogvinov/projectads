@@ -1,0 +1,20 @@
+/*
+*= require_tree '.'
+*= stub 'active_admin'
+*= require_self
+*/
+@import "bootstrap";
+
+.btn.btn-outline-primary:hover a {
+	color: white;
+	text-decoration: none;
+}
+
+ul.locales {
+	list-style-type: none;
+}
+
+.home-link a {
+	color: black;
+	text-decoration: none;
+}

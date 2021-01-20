@@ -13,22 +13,25 @@
 
   <div class="field">
     <%= form.label :title, "#{t('announcements.fields.title')}: " %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, {class: 'form-control', autofocus: true} %>
   </div>
+  <br>
 
   <div class="field">
     <%= form.label :content, "#{t('announcements.fields.content')}: " %>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, {class: 'form-control'} %>
   </div>
+  <br>
 
   <div class="field">
     <%= form.label :announcement_type, "#{t('announcements.fields.type')}: " %>
-    <%= form.select :announcement_type, Announcement::VALID_TYPES.map{ |type| [t("announcements.types.#{type.downcase}"), type]} %>
+    <%= form.select :announcement_type, Announcement::VALID_TYPES.map{ |type| [t("announcements.types.#{type.downcase}"), type]}, {}, {:class => 'form-control'} %>
   </div>
+  <br>
 
-  <div class="field">
-    <%= form.label :phone, "#{t('announcements.fields.phone')}: " %>
-    <%= form.telephone_field :phone, autofocus: true, placeholder: '+375(XX)-XXX-XX-XX' %>
+  <div class="field phone-field">
+    <%= form.label :phone, "#{t('announcements.fields.phone')}: " %><br>
+    <%= form.telephone_field :phone, {placeholder: '+375(XX)-XXX-XX-XX', class: 'form-control'} %>
   </div>
 
   <div class="field">
@@ -39,11 +42,11 @@
 <div class="flex-buttons">
   <% if draft_or_rejected(@announcement) %>
     <div class="actions">
-      <%= form.submit t('announcements.buttons.save_draft') %>
+      <%= form.submit t('announcements.buttons.post'), {name: 'post_button', class: 'btn btn-success'} %>
     </div>
-  <div class="actions">
-    <%= form.submit t('announcements.buttons.post'), name: 'post_button' %>
-  </div>
+    <div class="actions">
+      <%= form.submit t('announcements.buttons.save_draft'), class: 'btn btn-secondary' %>
+    </div>
   <% end %>
 </div>
   
