@@ -18,3 +18,28 @@ ul.locales {
 	color: black;
 	text-decoration: none;
 }
+
+.product-img {
+	//width: 300px;
+	height: 190px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	object-fit: fill;
+}
+
+.product-img img {
+	margin: auto;
+	max-width: 350px;
+
+}
+
+.media {
+	margin-bottom: 1rem;
+	border: 2px solid;
+}
+
+.media-body {
+	padding: 1rem;
+}

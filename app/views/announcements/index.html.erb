@@ -2,23 +2,21 @@
 <h2><%= t('announcements.titles.announcements') %></h2><br>
 
     <% @announcements.each do |announcement| %>
-    <div class="row">
-      <div class="col-sm- card" style="width: 18rem; height: 12em">
-        <div class="card-img-top">
-          <%= image_tag(announcement.image, style: "width:100%") if announcement.image.attached? %>
+      <div class="media">
+        <div class="product-img">
+          <%= image_tag(announcement.image) if announcement.image.attached? %>
         </div>
-      </div>
-      <div class="col-md-8 card" style="width: 35rem;">
-        <div class="card-body">
+        <div class="media-body">
           <%= announcement.title %><br>
-          <%= announcement.content.truncate(100, separator: ' ') %><br>
-          <i><%= t("announcements.types.#{announcement.announcement_type.downcase}") %></i>
+          <span class="card-subtitle mb-2 text-muted"><%= announcement.content.truncate(100, separator: ' ') %></span><br>
+          <i><%= t("announcements.types.#{announcement.announcement_type.downcase}") %></i><br>
           <%= announcement.user_id %><br>
-          <%= link_to t('announcements.buttons.show'), announcement %><br>
-          <%= announcement.created_at.strftime("%d.%m.%Y") %><br>
+          <div class="d-flex justify-content-between">
+            <%= link_to t('announcements.buttons.show'), announcement %>
+            <%= announcement.created_at.strftime("%d.%m.%Y") %>
+          </div>
         </div>
       </div>
-    </div>
     <% end %>
 <br>
 <span class="pagination justify-content-center">
