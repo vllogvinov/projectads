@@ -12,29 +12,7 @@
   </head>
 
   <body>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-      <h5 class="my-0 mr-md-auto font-weight-normal home-link"><%= link_to 'ProjectAds', root_path %></h5>
-      <% if user_signed_in? %>
-        <nav class="my-2 my-md-0 mr-md-3">
-          <span class="p-2 text-dark">
-            <%= link_to t('announcements.buttons.new_announcement'), new_announcement_path %>
-          </span>
-          <span class="p-2 text-dark">
-          <%= link_to t('announcements.buttons.my_announcements'), announcements_user_path(current_user, @announcement) %>
-          </span>
-        </nav>
-        <button class="btn btn-outline-primary">
-          <%= link_to t('announcements.buttons.log_out'), destroy_user_session_path, :method => :delete %>
-        </button>
-      <% else %>
-        <span class="btn btn-outline-primary">
-          <%= link_to t('announcements.buttons.sign_in'), new_user_session_path %>
-        </span>
-        <span class="btn btn-outline-primary">
-          <%= link_to t('announcements.buttons.sign_up'), new_user_registration_path %>
-        </span>
-      <% end %>
-    </div>
+    <%= render 'header', announcement: @announcement %>
     <ul class="locales">
       <li><%= link_to 'English', url_for(locale: :en) %></li>
       <li><%= link_to 'Русский', url_for(locale: :ru) %></li>
@@ -42,5 +20,6 @@
     <div class="container">
       <%= yield %>
     </div>
+    <%= render 'footer', announcement: @announcement %>
   </body>
 </html>
