@@ -191,6 +191,9 @@ GEM
       raabro (~> 1.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    haml (5.2.1)
+      temple (>= 0.8.0)
+      tilt
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
@@ -444,6 +447,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     thwait (0.2.0)
@@ -518,6 +522,7 @@ DEPENDENCIES
   enumerize
   factory_bot_rails
   faker
+  haml
   jbuilder (~> 2.7)
   jquery-rails
   kaminari
