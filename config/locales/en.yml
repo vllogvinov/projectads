@@ -1,4 +1,9 @@
 en:
+  activerecord:
+    attributes:
+      announcement: 
+        title: 'Title'
+        content: 'Description'
   announcements:
     titles:
       announcements: Announcements
@@ -40,6 +45,8 @@ en:
       created: Announcement was successfully created and is currently being checked by the administration. It will be published soon.
       updated: Announcement was updated
       deleted: Announcement was deleted
+  errors:
+    prohibited_from_being_saved: Next errors prohibited this announcement from being saved
   confirm_messages:
     confirm_delete: Are you sure?
     on_moderation_message: Announcement is on the moderation...

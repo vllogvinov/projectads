@@ -1,4 +1,9 @@
 ru:
+  activerecord:
+    attributes:
+      announcement: 
+        title: 'Заголовок'
+        content: 'Описание'
   announcements:
     titles:
       announcements: Объявления
@@ -40,6 +45,8 @@ ru:
       created: Объявление успешно создано и в данный момент проверяется администрацией. Скоро оно будет опубликовано.
       updated: Объявление обновлено
       deleted: Объявление удалено
+  errors:
+    prohibited_from_being_saved: Следующие ошибки не позволяют сохранить объявление
   confirm_messages:
     confirm_delete: Вы уверены? 
     on_moderation_message: Ваше объявление обрабатывается администрацией

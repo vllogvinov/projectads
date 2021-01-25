@@ -5,7 +5,7 @@
 </p>
 
 <div class="show-image">
-	<%= link_to image_tag(@announcement.image, style: "width:100%"), announcements_path if @announcement.image.attached? %>	
+	<%= link_to image_tag(@announcement.image), announcements_path if @announcement.image.attached? %>	
 </div>
 
 

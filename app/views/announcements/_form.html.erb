@@ -1,7 +1,7 @@
 <%= form_with(model: announcement, local: true) do |form| %>
   <% if announcement.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+      <h2><%= t('errors.prohibited_from_being_saved') %>:</h2>
 
       <ul>
         <% announcement.errors.full_messages.each do |message| %>
