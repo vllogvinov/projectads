@@ -37,7 +37,7 @@ en:
       sell: Sell
       exchange: Exchange
     notices:
-      created: Announcement was successfully created
+      created: Announcement was successfully created and is currently being checked by the administration. It will be published soon.
       updated: Announcement was updated
       deleted: Announcement was deleted
   confirm_messages:

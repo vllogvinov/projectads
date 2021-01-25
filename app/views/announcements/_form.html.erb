@@ -12,30 +12,30 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title, "#{t('announcements.fields.title')}: " %>
+    <%= form.label :title, t('announcements.fields.title') %>:
     <%= form.text_field :title, {class: 'form-control', autofocus: true} %>
   </div>
   <br>
 
   <div class="field">
-    <%= form.label :content, "#{t('announcements.fields.content')}: " %>
+    <%= form.label :content, t('announcements.fields.content') %>:
     <%= form.text_area :content, {class: 'form-control'} %>
   </div>
   <br>
 
   <div class="field">
-    <%= form.label :announcement_type, "#{t('announcements.fields.type')}: " %>
+    <%= form.label :announcement_type, t('announcements.fields.type') %>:
     <%= form.select :announcement_type, Announcement::VALID_TYPES.map{ |type| [t("announcements.types.#{type.downcase}"), type]}, {}, {:class => 'form-control'} %>
   </div>
   <br>
 
   <div class="field phone-field">
-    <%= form.label :phone, "#{t('announcements.fields.phone')}: " %><br>
+    <%= form.label :phone, t('announcements.fields.phone') %>:<br>
     <%= form.telephone_field :phone, {placeholder: '+375(XX)-XXX-XX-XX', class: 'form-control'} %>
   </div>
 
   <div class="field">
-    <%= form.label :image, "#{t('announcements.fields.image')}:" %>&nbsp
+    <%= form.label :image, t('announcements.fields.image') %>:&nbsp
     <%= form.file_field :image %>
   </div>
 

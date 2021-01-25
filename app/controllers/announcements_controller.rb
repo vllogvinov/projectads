@@ -2,9 +2,10 @@
 
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: %i[show edit update destroy]
+  ITEMS_PER_PAGE = 10
 
   def index
-    @announcements = Announcement.published.includes(image_attachment: :blob).page(params[:page]).per(6).desc_order
+    @announcements = Announcement.published.includes(image_attachment: :blob).page(params[:page]).per(ITEMS_PER_PAGE).desc_order
   end
 
   def show
