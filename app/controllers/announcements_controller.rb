@@ -6,7 +6,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = Announcement.published.includes(image_attachment: :blob).page(params[:page]).per(6).desc_order
+    @announcements = Announcement.published.desc_order.includes(image_attachment: :blob).page(params[:page]).per(6)
   end
 
   # GET /announcements/1
