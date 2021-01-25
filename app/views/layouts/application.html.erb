@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <%= render 'header', announcement: @announcement %>
+    <%= render './layouts/header' %>
     <ul class="locales">
       <li><%= link_to 'English', url_for(locale: :en) %></li>
       <li><%= link_to 'Русский', url_for(locale: :ru) %></li>
@@ -20,6 +20,6 @@
     <div class="container">
       <%= yield %>
     </div>
-    <%= render 'footer', announcement: @announcement %>
+    <%= render './layouts/footer' %>
   </body>
 </html>

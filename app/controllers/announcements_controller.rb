@@ -57,7 +57,7 @@ class AnnouncementsController < ApplicationController
   private
 
   def set_announcement
-    @announcement = Announcement.find(params[:id])
+    @announcement ||= Announcement.find(params[:id])
   end
 
   def announcement_params

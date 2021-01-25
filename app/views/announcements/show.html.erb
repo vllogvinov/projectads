@@ -29,7 +29,7 @@
   <%= @announcement.phone %>
 </p>
 
-<% if @announcement.draft? || @announcement.rejected? %>
+<% if draft_or_rejected(@announcement) %>
   <% if can? :update, @announcement %>
   	<%= link_to t('announcements.buttons.edit'), edit_announcement_path(@announcement) %> |
   <% end %>
@@ -38,7 +38,7 @@
 <% end %>
 
 <% if can? :delete, @announcement %>
-  <%= link_to t('announcements.buttons.destroy'), @announcement, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+  <%= link_to t('announcements.buttons.destroy'), @announcement, method: :delete, data: { confirm: t('confirm_messages.confirm_delete') } %> | 
 <% end %>
 
 <%= link_to t('announcements.buttons.back'), :back %>
