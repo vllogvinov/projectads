@@ -11,7 +11,9 @@ class Announcement < ApplicationRecord
   scope :desc_order, -> { order(created_at: :desc) }
   scope :published, -> { where(status: 4) }
 
-  validates_presence_of(:title, :content, :announcement_type)
+  validates :title, presence: true
+  validates :content, presence: true
+  validates :announcement_type, presence: true
 
   enum status: {
     draft: 0,

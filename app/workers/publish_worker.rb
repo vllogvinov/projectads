@@ -4,6 +4,6 @@ class PublishWorker
   include Sidekiq::Worker
 
   def perform
-    Announcement.approved.update_all(status: 'published')
+    Announcement.approved.find_each { |announcement| announcement.update(status: 'published') }
   end
 end

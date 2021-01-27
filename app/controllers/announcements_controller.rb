@@ -5,13 +5,14 @@ class AnnouncementsController < ApplicationController
   ITEMS_PER_PAGE = 10
 
   def index
-    @announcements = Announcement.published.includes(image_attachment: :blob).page(params[:page]).per(ITEMS_PER_PAGE).desc_order
+    @announcements = Announcement.published.includes(image_attachment: :blob)
+                                 .page(params[:page]).per(ITEMS_PER_PAGE).desc_order
   end
 
   def show
-    if @announcement.rejected?
-      flash[:notice] = t('flashes.reject_notice')
-    end
+    return unless @announcement.rejected?
+
+    flash[:notice] = t('flashes.reject_notice')
   end
 
   def new
@@ -25,12 +26,11 @@ class AnnouncementsController < ApplicationController
     @announcement.send_to_moderate if params[:post_button].present?
     respond_to do |format|
       if @announcement.save
-        format.html { redirect_to @announcement, notice: t('announcements.notices.created') }
-        format.json { render :show, status: :created, location: @announcement }
+        response -> { redirect_to @announcement, notice: t('announcements.notices.created') }
       else
-        format.html { render :new }
-        format.json { render json: @announcement.errors, status: :unprocessable_entity }
+        response -> { render :new }
       end
+      format.html response
     end
   end
 
@@ -38,12 +38,11 @@ class AnnouncementsController < ApplicationController
     respond_to do |format|
       if @announcement.update(announcement_params)
         status_definition
-        format.html { redirect_to @announcement, notice: t('announcements.notices.updated') }
-        format.json { render :show, status: :ok, location: @announcement }
+        response -> { redirect_to @announcement, notice: t('announcements.notices.updated') }
       else
-        format.html { render :edit }
-        format.json { render json: @announcement.errors, status: :unprocessable_entity }
+        response -> { render :edit }
       end
+      format.html response
     end
   end
 
@@ -51,14 +50,13 @@ class AnnouncementsController < ApplicationController
     @announcement.destroy
     respond_to do |format|
       format.html { redirect_to announcements_url, notice: t('announcements.notices.deleted') }
-      format.json { head :no_content }
     end
   end
 
   private
 
   def set_announcement
-    @announcement ||= Announcement.find(params[:id])
+    @announcement = Announcement.find(params[:id])
   end
 
   def announcement_params
