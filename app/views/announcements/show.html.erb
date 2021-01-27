@@ -4,32 +4,32 @@
   <%= @announcement.title %>
 </p>
 
-<div style="width:400px; height:auto">
-	<%= link_to image_tag(@announcement.image, style: "width:100%"), announcements_path if @announcement.image.attached? %>	
+<div class="show-image">
+	<%= link_to image_tag(@announcement.image), announcements_path if @announcement.image.attached? %>	
 </div>
 
 
 <p>
-  <strong><%= "#{t('announcements.fields.content')}: " %></strong>
+  <strong><%= t('announcements.fields.content') %>:</strong>
   <%= @announcement.content %>
 </p>
   
 <p>
-  <strong><%= "#{t('announcements.fields.type')}: " %></strong>
+  <strong><%= t('announcements.fields.type') %>:</strong>
   <%= t("announcements.types.#{@announcement.announcement_type.downcase}") %>
 </p>
 
 <p>
-  <strong><%= "#{t('announcements.fields.author')}: " %></strong>
+  <strong><%= t('announcements.fields.author') %>:</strong>
   <%= @announcement.user_id  %>
 </p>
 
 <p>
-  <strong><%= "#{t('announcements.fields.phone')}: " %></strong>
+  <strong><%= t('announcements.fields.phone') %>:</strong>
   <%= @announcement.phone %>
 </p>
 
-<% if @announcement.draft? || @announcement.rejected? %>
+<% if draft_or_rejected(@announcement) %>
   <% if can? :update, @announcement %>
   	<%= link_to t('announcements.buttons.edit'), edit_announcement_path(@announcement) %> |
   <% end %>
@@ -38,7 +38,8 @@
 <% end %>
 
 <% if can? :delete, @announcement %>
-  <%= link_to t('announcements.buttons.destroy'), @announcement, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+  <%= link_to t('announcements.buttons.destroy'), @announcement, method: :delete, 
+              data: { confirm: t('confirm_messages.confirm_delete') } %> | 
 <% end %>
 
 <%= link_to t('announcements.buttons.back'), :back %>

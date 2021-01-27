@@ -1,4 +1,9 @@
 ru:
+  activerecord:
+    attributes:
+      announcement: 
+        title: 'Заголовок'
+        content: 'Описание'
   announcements:
     titles:
       announcements: Объявления
@@ -6,8 +11,8 @@ ru:
       edit_announcement: Редактирование объявления
       user_announcements: Мои объявления
     fields:
-      title: Заголовок
-      content: Текст объявления
+      title: Название товара или услуги
+      content: Описание
       type: Тип
       author: Автор
       phone: Номер телефона
@@ -33,15 +38,22 @@ ru:
       published: Опубликовано
       archived: В архиве
     types:
-      buy: Покупка
-      sell: Продажа
+      buy: Куплю
+      sell: Продам
       exchange: Обмен
+    notices:
+      created: Объявление успешно создано и в данный момент проверяется администрацией. Скоро оно будет опубликовано.
+      updated: Объявление обновлено
+      deleted: Объявление удалено
+  errors:
+    prohibited_from_being_saved: Следующие ошибки не позволяют сохранить объявление
   confirm_messages:
     confirm_delete: Вы уверены? 
     on_moderation_message: Ваше объявление обрабатывается администрацией
   flashes:
     reject_notice: Ваше объявление не соответствует правилам публикации и было отклонено. Вы можете отредактировать его и попробовать еще раз.
-  
+    no_posts: Вы еще не сохранили ни одного объявления.
+
   devise:
     confirmations:
       confirmed: Ваш адрес эл. почты успешно подтвержден.

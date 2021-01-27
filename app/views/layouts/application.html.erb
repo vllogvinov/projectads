@@ -5,11 +5,21 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' %>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render './layouts/header' %>
+    <ul class="locales">
+      <li><%= link_to 'English', url_for(locale: :en) %></li>
+      <li><%= link_to 'Русский', url_for(locale: :ru) %></li>
+    </ul>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <%= render './layouts/footer' %>
   </body>
 </html>

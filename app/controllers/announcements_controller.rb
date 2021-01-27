@@ -12,9 +12,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements/1
   # GET /announcements/1.json
   def show
-    if @announcement.rejected?
-      flash[:notice] = t('flashes.reject_notice')
-    end
+    flash[:notice] = t('flashes.reject_notice') if @announcement.rejected?
   end
 
   # GET /announcements/new
@@ -33,10 +31,8 @@ class AnnouncementsController < ApplicationController
     respond_to do |format|
       if @announcement.save
         format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
-        format.json { render :show, status: :created, location: @announcement }
       else
         format.html { render :new }
-        format.json { render json: @announcement.errors, status: :unprocessable_entity }
       end
     end
   end

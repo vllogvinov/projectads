@@ -1,49 +1,24 @@
 <p id="notice"><%= notice %></p>
+<h2><%= t('announcements.titles.announcements') %></h2><br>
 
-<h1><%= t('announcements.titles.announcements') %></h1>
-
-<table>
-  <thead>
-    <tr>
-      <th> <%= t('announcements.fields.title') %> </th>
-      <th></th>
-      <th> <%= t('announcements.fields.content') %> </th>
-      <th> <%= t('announcements.fields.type') %> </th>
-      <th> <%= t('announcements.fields.author') %> </th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @announcements.each do |announcement| %>
-      <tr>
-        <td><%= announcement.title %></td>
-        <td><div style="width: 60px; height:auto"><%= image_tag(announcement.image, style: "width:100%") if announcement.image.attached? %></div></td>
-        <td><%= announcement.content %></td>
-        <td><%= t("announcements.types.#{announcement.announcement_type.downcase}") %></td>
-        <td><%= announcement.user_id %></td>
-        <td><%= link_to t('announcements.buttons.show'), announcement %></td>
-        
-        <% if can? :index, @announcement %>
-          <td><%= link_to t('announcements.buttons.edit'), edit_announcement_path(announcement) %></td>
-        <% end %>
-        <% if can? :destroy, @announcement %>
-          <td><%= link_to t('announcements.buttons.destroy'), announcement, method: :delete, data: { confirm: t('confirm_messages.confirm_delete') } %></td>
-        <% end %>
-      </tr>
+      <div class="media">
+        <div class="product-img">
+          <%= image_tag(announcement.image) if announcement.image.attached? %>
+        </div>
+        <div class="media-body">
+          <%= announcement.title %><br>
+          <span class="card-subtitle mb-2 text-muted"><%= announcement.content.truncate(100, separator: ' ') %></span><br>
+          <i><%= t("announcements.types.#{announcement.announcement_type.downcase}") %></i><br>
+          <%= announcement.user_id %><br>
+          <div class="d-flex justify-content-between">
+            <%= link_to t('announcements.buttons.show'), announcement %>
+            <%= announcement.created_at.strftime("%d.%m.%Y") %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
 <br>
-
-<%= paginate @announcements %>
-
-<% if user_signed_in? %>
-  <%= link_to t('announcements.buttons.new_announcement'), new_announcement_path %><br>
-  <%= link_to t('announcements.buttons.log_out'), destroy_user_session_path %><br>
-  <%= link_to t('announcements.buttons.my_announcements'), announcements_user_path(current_user, @announcement) %>
-<% else %>
-  <%= link_to t('announcements.buttons.sign_in'), new_user_session_path %>
-  <%= link_to t('announcements.buttons.sign_up'), new_user_registration_path %>
-<% end %>
+<span class="pagination justify-content-center">
+  <%= paginate @announcements, theme: 'twitter-bootstrap-4' %>
+</span>
