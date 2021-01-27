@@ -1,4 +1,4 @@
 :schedule:
   publishworker:
-    cron: '59 23 * * *'
+    cron: '* * * * *'
     class: PublishWorker

@@ -1,4 +1,9 @@
 en:
+  activerecord:
+    attributes:
+      announcement: 
+        title: 'Title'
+        content: 'Description'
   announcements:
     titles:
       announcements: Announcements
@@ -6,8 +11,8 @@ en:
       edit_announcement: Editing announcement
       user_announcements: My announcements
     fields:
-      title: Title
-      content: Content
+      title: Product or service name
+      content: Description
       type: Type
       author: Author
       phone: Phone number
@@ -36,12 +41,19 @@ en:
       buy: Buy
       sell: Sell
       exchange: Exchange
+    notices:
+      created: Announcement was successfully created and is currently being checked by the administration. It will be published soon.
+      updated: Announcement was updated
+      deleted: Announcement was deleted
+  errors:
+    prohibited_from_being_saved: Next errors prohibited this announcement from being saved
   confirm_messages:
     confirm_delete: Are you sure?
     on_moderation_message: Announcement is on the moderation...
   flashes:
     reject_notice: Your announcement does not comply with the publication rules and has been rejected. You can edit it and try again. 
-    
+    no_posts: You have not saved any announcements yet.
+
   devise:
     confirmations:
       confirmed: Your email address has been successfully confirmed.

@@ -1,7 +1,7 @@
 <%= form_with(model: announcement, local: true) do |form| %>
   <% if announcement.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+      <h2><%= t('errors.prohibited_from_being_saved') %>:</h2>
 
       <ul>
         <% announcement.errors.full_messages.each do |message| %>
@@ -12,40 +12,41 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title, "#{t('announcements.fields.title')}: " %>
-    <%= form.text_field :title %>
+    <%= form.label :title, t('announcements.fields.title') %>:
+    <%= form.text_field :title, {class: 'form-control', autofocus: true} %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= form.label :content, t('announcements.fields.content') %>:
+    <%= form.text_area :content, {class: 'form-control'} %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= form.label :announcement_type, t('announcements.fields.type') %>:
+    <%= form.select :announcement_type, Announcement::VALID_TYPES.map{ |type| [t("announcements.types.#{type.downcase}"), type]}, {}, {:class => 'form-control'} %>
+  </div>
+  <br>
+
+  <div class="field phone-field">
+    <%= form.label :phone, t('announcements.fields.phone') %>:<br>
+    <%= form.telephone_field :phone, {placeholder: '+375(XX)-XXX-XX-XX', class: 'form-control'} %>
   </div>
 
   <div class="field">
-    <%= form.label :content, "#{t('announcements.fields.content')}: " %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :announcement_type, "#{t('announcements.fields.type')}: " %>
-    <%= form.select :announcement_type, Announcement::VALID_TYPES.map{ |type| [t("announcements.types.#{type.downcase}"), type]} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone, "#{t('announcements.fields.phone')}: " %>
-    <%= form.telephone_field :phone, autofocus: true, placeholder: '+375(XX)-XXX-XX-XX' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image, "#{t('announcements.fields.image')}:" %>&nbsp
+    <%= form.label :image, t('announcements.fields.image') %>:&nbsp
     <%= form.file_field :image %>
   </div>
 
 <div class="flex-buttons">
   <% if draft_or_rejected(@announcement) %>
     <div class="actions">
-      <%= form.submit t('announcements.buttons.save_draft') %>
+      <%= form.submit t('announcements.buttons.post'), {name: 'post_button', class: 'btn btn-success'} %>
     </div>
-  <div class="actions">
-    <%= form.submit t('announcements.buttons.post'), name: 'post_button' %>
-  </div>
+    <div class="actions">
+      <%= form.submit t('announcements.buttons.save_draft'), class: 'btn btn-secondary' %>
+    </div>
   <% end %>
 </div>
-  
-
 <% end %>
