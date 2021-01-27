@@ -21,7 +21,6 @@ class AnnouncementsController < ApplicationController
   def edit; end
 
   def create
-    binding.pry
     @announcement = current_user.announcements.new(announcement_params)
     @announcement.send_to_moderate if params[:post_button].present?
     respond_to do |format|
