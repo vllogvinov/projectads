@@ -26,11 +26,10 @@ class AnnouncementsController < ApplicationController
     @announcement.send_to_moderate if params[:post_button].present?
     respond_to do |format|
       if @announcement.save
-        response -> { redirect_to @announcement, notice: t('announcements.notices.created') }
+        format.html { redirect_to @announcement, notice: t('announcements.notices.created') }
       else
-        response -> { render :new }
+        format.html { render :new }
       end
-      format.html response
     end
   end
 
@@ -38,11 +37,10 @@ class AnnouncementsController < ApplicationController
     respond_to do |format|
       if @announcement.update(announcement_params)
         status_definition
-        response -> { redirect_to @announcement, notice: t('announcements.notices.updated') }
+        format.html { redirect_to @announcement, notice: t('announcements.notices.updated') }
       else
-        response -> { render :edit }
+        format.html { render :edit }
       end
-      format.html response
     end
   end
 
