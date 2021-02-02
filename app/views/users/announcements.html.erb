@@ -1,0 +1,30 @@
+<h2><%= t('announcements.titles.user_announcements') %></h2> 
+<% if current_user.announcements.count != 0 %>
+  <% @announcements.each do |announcement| %>
+    <div class="media">
+      <div class="product-img">
+        <%= image_tag(announcement.image) if announcement.image.attached? %>
+      </div>
+      <div class="media-body">
+        <%= announcement.title %><br>
+        <%= announcement.content %><br>
+        <%= t("announcements.types.#{announcement.announcement_type.downcase}") %><br>
+        <%= announcement.user_id %><br>
+        <%= t("announcements.status.#{announcement.status}") %><br>
+        <%= link_to t('announcements.buttons.show'), announcement %>
+
+        <% if can? :index, @announcement %>
+          <%= link_to t('announcements.buttons.edit'), edit_announcement_path(announcement) %>
+        <% end %>
+
+        <% if can? :destroy, @announcement %>
+          <%= link_to t('announcements.buttons.destroy'), announcement, method: :delete, data: { confirm: t('confirm_messages.confirm_delete') } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t('flashes.no_posts') %></p>
+<% end %>
+
+<%= link_to t('announcements.buttons.back'), announcements_path %>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -8,7 +10,30 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
+gem 'aasm'
+gem 'activeadmin'
+gem 'activeadmin_addons'
+gem 'active_admin_theme'
+gem 'bootstrap'
+gem 'bootstrap4-kaminari-views'
+gem 'bootstrap-sass'
+gem 'devise'
+gem 'devise-i18n'
+gem 'dotenv-rails'
+gem 'haml'
+gem 'jquery-rails'
+gem 'kaminari'
+gem 'kaminari-i18n'
+gem 'phonelib'
 gem 'puma', '~> 4.1'
+gem 'rack-mini-profiler'
+gem 'rails-i18n'
+gem 'redis-rails'
+gem 'rubocop', require: false
+gem 'rubycritic', require: false
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+gem 'traceroute'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -30,18 +55,22 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'pry'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'brakeman'
+  gem 'bullet'
+  gem 'cancan'
+  gem 'enumerize'
+  gem 'letter_opener'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'enumerize'
-  gem 'cancan'
 end
 
 group :test do
@@ -49,8 +78,17 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
+  gem 'colored'
+  gem 'database_cleaner-active_record'
+  gem 'deadweight', require: 'deadweight/hijack/rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false, group: :test
+  gem 'turnip'
   gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<h2><%= t('announcements.titles.announcements') %></h2><br>
+
+    <% @announcements.each do |announcement| %>
+      <div class="media">
+        <div class="product-img">
+          <%= image_tag(announcement.image) if announcement.image.attached? %>
+        </div>
+        <div class="media-body">
+          <%= announcement.title %><br>
+          <span class="card-subtitle mb-2 text-muted"><%= announcement.content.truncate(100, separator: ' ') %></span><br>
+          <i><%= t("announcements.types.#{announcement.announcement_type.downcase}") %></i><br>
+          <%= announcement.user_id %><br>
+          <div class="d-flex justify-content-between">
+            <%= link_to t('announcements.buttons.show'), announcement %>
+            <%= announcement.created_at.strftime("%d.%m.%Y") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+<br>
+<span class="pagination justify-content-center">
+  <%= paginate @announcements, theme: 'twitter-bootstrap-4' %>
+</span>

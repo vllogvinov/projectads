@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= @announcement.title %>
+</p>
+
+<div class="show-image">
+	<%= link_to image_tag(@announcement.image), announcements_path if @announcement.image.attached? %>	
+</div>
+
+
+<p>
+  <strong><%= t('announcements.fields.content') %>:</strong>
+  <%= @announcement.content %>
+</p>
+  
+<p>
+  <strong><%= t('announcements.fields.type') %>:</strong>
+  <%= t("announcements.types.#{@announcement.announcement_type.downcase}") %>
+</p>
+
+<p>
+  <strong><%= t('announcements.fields.author') %>:</strong>
+  <%= @announcement.user_id  %>
+</p>
+
+<p>
+  <strong><%= t('announcements.fields.phone') %>:</strong>
+  <%= @announcement.phone %>
+</p>
+
+<% if draft_or_rejected(@announcement) %>
+  <% if can? :update, @announcement %>
+  	<%= link_to t('announcements.buttons.edit'), edit_announcement_path(@announcement) %> |
+  <% end %>
+<% elsif @announcement.ready_to_publish? %>
+  <p><b><%= t('confirm_messages.on_moderation_message') %></b></p>
+<% end %>
+
+<% if can? :delete, @announcement %>
+  <%= link_to t('announcements.buttons.destroy'), @announcement, method: :delete, 
+              data: { confirm: t('confirm_messages.confirm_delete') } %> | 
+<% end %>
+
+<%= link_to t('announcements.buttons.back'), :back %>
+

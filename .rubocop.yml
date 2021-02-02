@@ -1,0 +1,27 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - db/schema.rb
+    - db/migrate/**
+    - node_modules/**/*
+    - bin/**/*
+    - tmp/*
+Style/Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - app/admin/**/*
+    - app/api/**/*
+    - spec/**/*
+Lint/MissingSuper:
+  Enabled: false
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - staging
+    - production

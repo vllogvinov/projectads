@@ -1,0 +1,6 @@
+<h2><%= t('announcements.titles.edit_announcement') %></h2>
+
+<%= render 'form', announcement: @announcement %>
+
+<%= link_to t('announcements.buttons.show'), @announcement %> |
+<%= link_to t('announcements.buttons.back'), :back %>
