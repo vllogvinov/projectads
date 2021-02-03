@@ -10,6 +10,7 @@ AllCops:
     - node_modules/**/*
     - bin/**/*
     - tmp/*
+    - app/controllers/users/sessions_controller.rb
 Style/Documentation:
   Enabled: false
 Metrics/BlockLength:
