@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/mimemagicrb/mimemagic.git
+  revision: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
+  ref: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
+  specs:
+    mimemagic (0.3.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -241,11 +248,10 @@ GEM
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
     middleware (0.1.0)
-    mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.3)
-    msgpack (1.4.1)
+    msgpack (1.6.0)
     nio4r (2.5.4)
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
@@ -377,16 +383,6 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.4.1)
       parser (>= 2.7.1.5)
-    rubocop-performance (1.9.2)
-      rubocop (>= 0.90.0, < 2.0)
-      rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.9.1)
-      activesupport (>= 4.2.0)
-      rack (>= 1.1)
-      rubocop (>= 0.90.0, < 2.0)
-    rubocop-rspec (2.1.0)
-      rubocop (~> 1.0)
-      rubocop-ast (>= 1.1.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.4)
     ruby_parser (3.15.1)
@@ -538,6 +534,7 @@ DEPENDENCIES
   kaminari-i18n
   letter_opener
   listen (~> 3.2)
+  mimemagic!
   phonelib
   pry
   puma (~> 4.1)
@@ -547,9 +544,6 @@ DEPENDENCIES
   redis-rails
   rspec-rails
   rubocop
-  rubocop-performance
-  rubocop-rails
-  rubocop-rspec
   rubycritic
   sass-rails (>= 6)
   selenium-webdriver
